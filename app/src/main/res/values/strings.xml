@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Chat Demo </string>
+    <string name="tab_text_1">Kişiler</string>
+    <string name="tab_text_2">Sohbetler</string>
+    <string name="tab_text_3">Ayarlar</string>
+    <string name="goback">Login Page</string>
+    <string name="register_button_text">Register</string>
+    <string name="register_screen_text">User Register Page</string>
+    <string name="register_text">Register  Now</string>
+    <string name="login_screen_text">Login Screen</string>
+    <string name="password">Password</string>
+    <string name="login_text">"Login "</string>
+    <string name="forgot_text">I Forgot my Password</string>
+    <string name="message_info_resource">04-04-2010 ...4dk önce</string>
+    <string name="person_name">Person Name</string>
+    <string name="person_email">Person Name</string>
+    <string name="write_something">Write something ...</string>
+    <string name="send_something">Send</string>
+    <string name="setting1">Settings 1</string>
+    <string name="setting2">Settings 2</string>
+    <string name="setting3">Settings 3</string>
+    <string name="write_username_hint">Write your name to display</string>
+    <string name="splash_screen_welcome_text">Chat App</string>
+    <string name="loading_text">Yükleniyor...</string>
+    <string name="popup">Kayıtlar Yükleniyor</string>
+    <string name="tab_1">Login</string>
+</resources>
