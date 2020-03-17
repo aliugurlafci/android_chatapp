@@ -1,26 +1,22 @@
 package com.example.chatapp.ui.main.Adaptor
 
-import android.content.Intent
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat.startActivity
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chatapp.R
-import com.example.chatapp.MainActivity
 import com.example.chatapp.StartMessageActivity
-import com.example.chatapp.ui.main.Channel
-import com.example.chatapp.ui.main.Fragment.HomeFragment
 import com.example.chatapp.ui.main.PageViewModel
 import com.example.chatapp.ui.main.Sezar.SezarGet
 import com.example.chatapp.ui.main.User
 
-class HomeAdapter(private val user: MutableList<Channel?>, var context: Context) :
-    RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
+class SelectUserAdapter(private val user: MutableList<User?>, var context: Context) :
+    RecyclerView.Adapter<SelectUserAdapter.MyViewHolder>() {
 
     private lateinit var view: View
 
@@ -40,12 +36,15 @@ class HomeAdapter(private val user: MutableList<Channel?>, var context: Context)
     override fun getItemCount(): Int {
         return user.size
     }
+
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.userNameText.text = user[position]?.channelName.toString()
-        holder.userEmailText.text = user[position]!!.channelUser.toString()
+        holder.userNameText.text = SezarGet(user.get(position)?.username).toMessage()
+        holder.userEmailText.text = SezarGet(user.get(position)?.userEmail).toMessage()
 
         holder.startChat.setOnClickListener {
             it.context.startActivity(Intent(it.context, StartMessageActivity::class.java))
+            val arr:ArrayList<String?> = arrayListOf(PageViewModel.getUserUI().value?.u_name,user[position]?.username)
+            PageViewModel().createChannel("Channel 1",arr )
         }
     }
 }

@@ -7,4 +7,5 @@
     <color name="colorBlack">#000</color>
     <color name="colorMiddleGet">#9EFAA2</color>
     <color name="colorOther">#050505</color>
+    <color name="textBackground">#A59E9E</color>
 </resources>

@@ -40,6 +40,7 @@ class ChatAdapter(private val context: Context, val msgList: MutableList<Message
         }
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         return when (viewType) {
             GET_VIEW -> {

@@ -29,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         val login: Button = findViewById(R.id.login_user)
         val registerUser: Button = findViewById(R.id.register_user)
+
         val email: EditText = findViewById(R.id.login_email)
         val password: EditText = findViewById(R.id.login_password)
 
@@ -48,24 +49,15 @@ class LoginActivity : AppCompatActivity() {
         }
 
         login.setOnClickListener {
-            var state :Boolean =false
-            val list: MutableList<User?> = PageViewModel().getUserData("user")
+            var list: MutableList<User?> =PageViewModel().getUserData("user",email.text.toString(),password.text.toString())
+            Toast.makeText(applicationContext,"Kontrol ediliyor.Lütfen bekleyiniz",Toast.LENGTH_LONG).show()
             Handler().postDelayed({
-                list.forEach {
-                    if (it?.userEmail.equals(SezarPost(email.text.toString()).toSezar()) && it?.password.equals(SezarPost(password.text.toString()).toSezar())) {
-                        PageViewModel.addUserUI(it?.username, it?.userEmail)
-                        state=true
-                        Toast.makeText(applicationContext, "Giriş başarılı", Toast.LENGTH_SHORT).show()
-                        goMain()
-                    }
+                if(list.size != 0){
+                    Toast.makeText(applicationContext,"Giriş başarılı",Toast.LENGTH_SHORT).show()
+                    PageViewModel.addUserUI(SezarGet(list[0]!!.username).toMessage(),SezarGet(list[0]!!.userEmail).toMessage().toString())
+                    goMain()
                 }
-            }, 500)
-            /*
-            if(!state){
-                Toast.makeText(applicationContext, "Kaydınız bulunmuyor", Toast.LENGTH_SHORT).show()
-                goRegister()
-            }
-            */
+            },1000)
 
         }
     }

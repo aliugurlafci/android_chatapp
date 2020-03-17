@@ -24,4 +24,5 @@
     <string name="loading_text">Yükleniyor...</string>
     <string name="popup">Kayıtlar Yükleniyor</string>
     <string name="tab_1">Login</string>
+    <string name="user_typing">Typing ...</string>
 </resources>

@@ -34,12 +34,34 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        app:backgroundTint="@color/colorPrimaryDark"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+   <RelativeLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_gravity="bottom|end">
+       <com.google.android.material.floatingactionbutton.FloatingActionButton
+           android:id="@+id/fab1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           app:backgroundTint="@color/colorPrimaryDark"
+           android:layout_margin="10dp"
+           app:srcCompat="@android:drawable/ic_input_add" />
+       <com.google.android.material.floatingactionbutton.FloatingActionButton
+           android:id="@+id/fab"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           app:backgroundTint="@color/colorPrimaryDark"
+           android:layout_below="@+id/fab1"
+           android:layout_margin="10dp"
+           app:srcCompat="@android:drawable/ic_dialog_email" />
+
+       <com.google.android.material.floatingactionbutton.FloatingActionButton
+           android:id="@+id/fab2"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="bottom|end"
+           app:backgroundTint="@color/colorPrimaryDark"
+           android:layout_margin="10dp"
+           android:layout_below="@+id/fab"
+           android:src="@drawable/ic_expand" />
+   </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

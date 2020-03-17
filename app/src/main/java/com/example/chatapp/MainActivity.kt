@@ -47,7 +47,27 @@ class MainActivity : AppCompatActivity() {
         val tabs: TabLayout = findViewById(R.id.tabs)
         tabs.setupWithViewPager(viewPager)
         val fab: FloatingActionButton = findViewById(R.id.fab)
+        val fab1:FloatingActionButton=findViewById(R.id.fab1)
+        val fab2:FloatingActionButton=findViewById(R.id.fab2)
 
+        Handler().postDelayed({
+            fab1.visibility=View.GONE
+            fab.visibility=View.GONE
+        },1000)
+
+        fab2.setOnClickListener {
+            if(fab.visibility==View.GONE){
+                fab1.visibility=View.VISIBLE
+                fab.visibility=View.VISIBLE
+            }
+            else{
+                fab1.visibility=View.GONE
+                fab.visibility=View.GONE
+            }
+        }
+        fab1.setOnClickListener{
+            startActivity(Intent(this,SelectUser::class.java))
+        }
         fab.setOnClickListener { view ->
             val inflater:LayoutInflater=getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val view=inflater.inflate(R.layout.popup_fab,null,false)

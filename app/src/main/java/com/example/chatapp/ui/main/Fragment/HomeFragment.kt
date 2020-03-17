@@ -7,15 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chatapp.R
-import com.example.chatapp.StartMessageActivity
 import com.example.chatapp.ui.main.Adaptor.HomeAdapter
+import com.example.chatapp.ui.main.Channel
 import com.example.chatapp.ui.main.PageViewModel
+import com.example.chatapp.ui.main.Service.BackgroundService
 import com.example.chatapp.ui.main.User
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -25,7 +26,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
  */
 class HomeFragment : Fragment() {
 
-    private lateinit var list: MutableList<User?>
+    private lateinit var list: MutableList<Channel?>
     private lateinit var pageViewModel: PageViewModel
     private lateinit var root: View
 
@@ -42,10 +43,13 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         list = mutableListOf()
+        //BackgroundService().startService(Intent(root.context,BackgroundService::class.java))
         root = inflater.inflate(R.layout.fragment_home, container, false)
         val recyclerView: RecyclerView = root.findViewById(R.id.homeRecyclerView)
         val loadingComp = root.findViewById<ProgressBar>(R.id.loadingState)
-        list = pageViewModel.getUserData("user")
+        val current=PageViewModel.getUserUI().value?.u_name
+
+        list = pageViewModel.getChannel(current)
         Handler().postDelayed({
             homeRecyclerView.adapter?.notifyDataSetChanged()
             recyclerView.adapter = HomeAdapter(list, root.context)
